@@ -101,8 +101,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* New 4-Column Services Section */}
-      {/* New 4-Column Services Section - Improved UI */}
+{/* New 4-Column Services Section - Improved Titles & Description */}
 <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
   <div className="text-center space-y-4 mb-16">
     <h2 className="text-3xl md:text-4xl font-bold">What We Do</h2>
@@ -118,15 +117,22 @@ const Home = () => {
         className="relative overflow-hidden border-0 rounded-xl shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-2 duration-300 animate-scale-in"
         style={{ animationDelay: `${index * 0.1}s` }}
       >
-        <CardContent className="p-10 text-center flex flex-col items-center space-y-6">
-          <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-3xl shadow-md">
+        <CardContent className="p-8 flex flex-col items-center text-center">
+          {/* Icon */}
+          <div className="w-20 h-20 mb-6 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-3xl shadow-md">
             <service.icon className="h-10 w-10" />
           </div>
-          <h3 className="text-xl font-semibold text-gray-900">{service.title}</h3>
-          <p className="text-gray-600">{service.description}</p>
+
+          {/* Title */}
+          <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-3">
+            {service.title}
+          </h3>
+
+          {/* Description */}
+          <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+            {service.description}
+          </p>
         </CardContent>
-        {/* Optional subtle gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/30 pointer-events-none rounded-xl"></div>
       </Card>
     ))}
   </div>
@@ -137,6 +143,7 @@ const Home = () => {
     </Button>
   </div>
 </section>
+
 
 
       {/* Highlights */}
@@ -158,30 +165,30 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <Card className="bg-gradient-primary text-white shadow-elegant">
-          <CardContent className="p-12 text-center space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Ready to Transform Your Brand?
-            </h2>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto">
-              Let's work together to create something extraordinary that sets
-              you apart from the competition.
-            </p>
-            <Button
-              asChild
-              size="lg"
-              variant="secondary"
-              className="bg-white text-primary hover:bg-white/90"
-            >
-              <Link to="/contact">
-                Start Your Project
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </CardContent>
-        </Card>
-      </section>
+      <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
+  <Card className="rounded-xl shadow-elegant overflow-hidden bg-gradient-to-r from-blue-600 to-purple-600">
+    <CardContent className="p-12 text-center space-y-6">
+      <h2 className="text-3xl md:text-4xl font-bold text-white">
+        Ready to Transform Your Brand?
+      </h2>
+      <p className="text-xl text-white/90 max-w-2xl mx-auto">
+        Let's work together to create something extraordinary that sets
+        you apart from the competition.
+      </p>
+      <Button
+        asChild
+        size="lg"
+        className="bg-white text-blue-600 hover:bg-white/90"
+      >
+        <Link to="/contact">
+          Start Your Project
+          <ArrowRight className="ml-2 h-5 w-5" />
+        </Link>
+      </Button>
+    </CardContent>
+  </Card>
+</section>
+
     </div>
   );
 };
