@@ -64,27 +64,26 @@ const Home = () => {
         />
 
         {/* Overlay for readability */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/50"></div>
 
         {/* Hero Content */}
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 animate-fade-in">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-white">
             Style{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-300">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-600">
               Vision with us
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-            Beta 360 is a branding agency that helps businesses stand out. We
-            create stunning designs and digital experiences that captivate your
-            audience and elevate your brand.
+          <p className="text-xl md:text-2xl text-white/80 max-w-2xl mx-auto leading-relaxed">
+            Beta 360 helps brands stand out with bold design and digital
+            experiences that inspire and engage
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button
               asChild
               size="lg"
               variant="secondary"
-              className="bg-white text-blue-600 hover:bg-white/90"
+              className="bg-blue-600 text-white hover:bg-blue-700"
             >
               <Link to="/contact">
                 Get Started Today
@@ -95,7 +94,7 @@ const Home = () => {
               asChild
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-white/10"
+              className="border-white text-white hover:border-blue-400 hover:text-blue-400"
             >
               <Link to="/portfolio">View Our Work</Link>
             </Button>
@@ -164,8 +163,8 @@ const Home = () => {
               Ready to Transform Your Brand?
             </h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto">
-              Let's work together to create something extraordinary that sets you
-              apart from the competition.
+              Let's work together to create something extraordinary that sets
+              you apart from the competition.
             </p>
             <Button
               asChild
