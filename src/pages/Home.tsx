@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ArrowRight, CheckCircle, Palette, Video, Zap } from "lucide-react";
+import { ArrowRight, CheckCircle, Palette, Video, Zap, Globe, Film, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
@@ -9,6 +9,40 @@ import video3 from "@/assets/videos/3.mp4";
 
 const videos = [video1, video2, video3];
 
+const services = [
+  {
+    title: "Brand Identity",
+    description:
+      "Crafting your unique story through logo design, color palettes, taglines, and comprehensive brand guidelines.",
+    icon: Palette, // Represents design and color
+  },
+  {
+    title: "Digital Presence",
+    description:
+      "Designing, building, and optimizing your website and social media to attract and engage your ideal customers.",
+    icon: Globe, // Represents web and global reach
+  },
+  {
+    title: "Creative Content",
+    description:
+      "Developing compelling visuals—from social graphics to videos—that stop the scroll and communicate your message.",
+    icon: Film, // Represents video and motion
+  },
+  {
+    title: "Strategic Consulting",
+    description:
+      "Providing data-driven insights on your market, positioning, and growth strategy to ensure long-term success.",
+    icon: TrendingUp, // Represents growth and analytics
+  },
+];
+
+const highlights = [
+  "5+ Years of Creative Excellence",
+  "200+ Satisfied Clients",
+  "Award-Winning Designs",
+  "24/7 Customer Support",
+];
+
 const Home = () => {
   const [currentVideo, setCurrentVideo] = useState(0);
 
@@ -16,44 +50,15 @@ const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setCurrentVideo((prev) => (prev + 1) % videos.length);
-    }, 5000); // 5000ms = 5s
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, [currentVideo]);
-
-  const services = [
-    {
-      icon: Palette,
-      title: "Graphic Design",
-      description:
-        "Logo design, branding, and visual identity solutions that make your brand stand out.",
-    },
-    {
-      icon: Video,
-      title: "Video Editing",
-      description:
-        "Professional video production and editing for marketing, events, and social media.",
-    },
-    {
-      icon: Zap,
-      title: "Digital Marketing",
-      description:
-        "Strategic digital campaigns that drive engagement and grow your business.",
-    },
-  ];
-
-  const highlights = [
-    "5+ Years of Creative Excellence",
-    "200+ Satisfied Clients",
-    "Award-Winning Designs",
-    "24/7 Customer Support",
-  ];
 
   return (
     <div className="space-y-20">
       {/* Hero Section with Video Slideshow */}
       <section className="relative overflow-hidden h-screen flex items-center">
-        {/* Background Slideshow Video */}
         <video
           key={currentVideo}
           className="absolute inset-0 object-cover w-full h-full"
@@ -62,11 +67,7 @@ const Home = () => {
           muted
           playsInline
         />
-
-        {/* Overlay for readability */}
         <div className="absolute inset-0 bg-black/50"></div>
-
-        {/* Hero Content */}
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 animate-fade-in">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-white">
             Style{" "}
@@ -96,24 +97,20 @@ const Home = () => {
             >
               <Link to="/portfolio">View Our Work</Link>
             </Button>
-
-
-
           </div>
         </div>
       </section>
 
-      {/* Services Preview */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* New 4-Column Services Section */}
+      <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl md:text-4xl font-bold">What We Do</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            From concept to creation, we offer comprehensive creative services
-            to help your business thrive.
+            Your full-service partner for building a powerful, cohesive, and profitable brand.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <Card
               key={service.title}
@@ -133,7 +130,7 @@ const Home = () => {
 
         <div className="text-center mt-12">
           <Button asChild variant="outline" size="lg">
-            <Link to="/services">View All Services</Link>
+            <Link to="/services">Explore Our Process</Link>
           </Button>
         </div>
       </section>
