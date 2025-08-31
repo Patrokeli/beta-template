@@ -43,7 +43,7 @@ const Home = () => {
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              We create stunning designs and digital experiences that elevate your brand and captivate your audience.
+              Beta 360 is a branding agency that helps businesses stand out. We create stunning designs and digital experiences that captivate your audience and elevate your brand.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button asChild size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
