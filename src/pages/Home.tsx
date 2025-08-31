@@ -102,38 +102,42 @@ const Home = () => {
       </section>
 
       {/* New 4-Column Services Section */}
-      <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <div className="text-center space-y-4 mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold">What We Do</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Your full-service partner for building a powerful, cohesive, and profitable brand.
-          </p>
-        </div>
+      {/* New 4-Column Services Section - Improved UI */}
+<section className="container mx-auto px-4 sm:px-6 lg:px-8 py-24">
+  <div className="text-center space-y-4 mb-16">
+    <h2 className="text-3xl md:text-4xl font-bold">What We Do</h2>
+    <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+      Your full-service partner for building a powerful, cohesive, and profitable brand.
+    </p>
+  </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {services.map((service, index) => (
-            <Card
-              key={service.title}
-              className="shadow-card hover:shadow-hover transition-all duration-300 animate-scale-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <CardContent className="p-8 text-center space-y-4">
-                <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto">
-                  <service.icon className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold">{service.title}</h3>
-                <p className="text-muted-foreground">{service.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    {services.map((service, index) => (
+      <Card
+        key={service.title}
+        className="relative overflow-hidden border-0 rounded-xl shadow-lg hover:shadow-2xl transition-transform transform hover:-translate-y-2 duration-300 animate-scale-in"
+        style={{ animationDelay: `${index * 0.1}s` }}
+      >
+        <CardContent className="p-10 text-center flex flex-col items-center space-y-6">
+          <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-3xl shadow-md">
+            <service.icon className="h-10 w-10" />
+          </div>
+          <h3 className="text-xl font-semibold text-gray-900">{service.title}</h3>
+          <p className="text-gray-600">{service.description}</p>
+        </CardContent>
+        {/* Optional subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/30 pointer-events-none rounded-xl"></div>
+      </Card>
+    ))}
+  </div>
 
-        <div className="text-center mt-12">
-          <Button asChild variant="outline" size="lg">
-            <Link to="/services">Explore Our Process</Link>
-          </Button>
-        </div>
-      </section>
+  <div className="text-center mt-12">
+    <Button asChild variant="outline" size="lg" className="hover:bg-blue-50">
+      <Link to="/services">Explore Our Process</Link>
+    </Button>
+  </div>
+</section>
+
 
       {/* Highlights */}
       <section className="bg-muted/50">
