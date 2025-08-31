@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowRight, CheckCircle, Palette, Video, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,9 +12,14 @@ const videos = [video1, video2, video3];
 const Home = () => {
   const [currentVideo, setCurrentVideo] = useState(0);
 
-  const handleVideoEnd = () => {
-    setCurrentVideo((prev) => (prev + 1) % videos.length);
-  };
+  // ⏳ Change video every 5 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCurrentVideo((prev) => (prev + 1) % videos.length);
+    }, 5000); // 5000ms = 5s
+
+    return () => clearTimeout(timer);
+  }, [currentVideo]);
 
   const services = [
     {
@@ -50,13 +55,12 @@ const Home = () => {
       <section className="relative overflow-hidden h-screen flex items-center">
         {/* Background Slideshow Video */}
         <video
-          key={currentVideo} // forces re-render on video change
+          key={currentVideo}
           className="absolute inset-0 object-cover w-full h-full"
           src={videos[currentVideo]}
           autoPlay
           muted
           playsInline
-          onEnded={handleVideoEnd}
         />
 
         {/* Overlay for readability */}
