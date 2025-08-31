@@ -82,8 +82,7 @@ const Home = () => {
             <Button
               asChild
               size="lg"
-              variant="secondary"
-              className="bg-blue-600 text-white hover:bg-blue-700"
+              className="bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800"
             >
               <Link to="/contact">
                 Get Started Today
@@ -93,11 +92,13 @@ const Home = () => {
             <Button
               asChild
               size="lg"
-              variant="outline"
-              className="border-white text-white hover:border-blue-400 hover:text-blue-400"
+              className="bg-white text-blue-600 hover:bg-blue-100 border border-white"
             >
               <Link to="/portfolio">View Our Work</Link>
             </Button>
+
+
+
           </div>
         </div>
       </section>
