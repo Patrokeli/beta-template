@@ -1,61 +1,100 @@
+import { useState } from "react";
 import { ArrowRight, CheckCircle, Palette, Video, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import video1 from "@/assets/videos/1.mp4";
+import video2 from "@/assets/videos/2.mp4";
+import video3 from "@/assets/videos/3.mp4";
+
+const videos = [video1, video2, video3];
 
 const Home = () => {
+  const [currentVideo, setCurrentVideo] = useState(0);
+
+  const handleVideoEnd = () => {
+    setCurrentVideo((prev) => (prev + 1) % videos.length);
+  };
+
   const services = [
     {
       icon: Palette,
       title: "Graphic Design",
-      description: "Logo design, branding, and visual identity solutions that make your brand stand out."
+      description:
+        "Logo design, branding, and visual identity solutions that make your brand stand out.",
     },
     {
       icon: Video,
       title: "Video Editing",
-      description: "Professional video production and editing for marketing, events, and social media."
+      description:
+        "Professional video production and editing for marketing, events, and social media.",
     },
     {
       icon: Zap,
       title: "Digital Marketing",
-      description: "Strategic digital campaigns that drive engagement and grow your business."
-    }
+      description:
+        "Strategic digital campaigns that drive engagement and grow your business.",
+    },
   ];
 
   const highlights = [
     "5+ Years of Creative Excellence",
     "200+ Satisfied Clients",
     "Award-Winning Designs",
-    "24/7 Customer Support"
+    "24/7 Customer Support",
   ];
 
   return (
     <div className="space-y-20">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-hero text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-          <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-              Style {" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-glow">
-                Vision with us
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Beta 360 is a branding agency that helps businesses stand out. We create stunning designs and digital experiences that captivate your audience and elevate your brand.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button asChild size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
-                <Link to="/contact">
-                  Get Started Today
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                <Link to="/portfolio">View Our Work</Link>
-              </Button>
-            </div>
+      {/* Hero Section with Video Slideshow */}
+      <section className="relative overflow-hidden h-screen flex items-center">
+        {/* Background Slideshow Video */}
+        <video
+          key={currentVideo} // forces re-render on video change
+          className="absolute inset-0 object-cover w-full h-full"
+          src={videos[currentVideo]}
+          autoPlay
+          muted
+          playsInline
+          onEnded={handleVideoEnd}
+        />
+
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-black/40"></div>
+
+        {/* Hero Content */}
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 animate-fade-in">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-white">
+            Style{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-300">
+              Vision with us
+            </span>
+          </h1>
+          <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+            Beta 360 is a branding agency that helps businesses stand out. We
+            create stunning designs and digital experiences that captivate your
+            audience and elevate your brand.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button
+              asChild
+              size="lg"
+              variant="secondary"
+              className="bg-white text-blue-600 hover:bg-white/90"
+            >
+              <Link to="/contact">
+                Get Started Today
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-white text-white hover:bg-white/10"
+            >
+              <Link to="/portfolio">View Our Work</Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -65,13 +104,18 @@ const Home = () => {
         <div className="text-center space-y-4 mb-16">
           <h2 className="text-3xl md:text-4xl font-bold">What We Do</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            From concept to creation, we offer comprehensive creative services to help your business thrive.
+            From concept to creation, we offer comprehensive creative services
+            to help your business thrive.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={service.title} className="shadow-card hover:shadow-hover transition-all duration-300 animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+            <Card
+              key={service.title}
+              className="shadow-card hover:shadow-hover transition-all duration-300 animate-scale-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
               <CardContent className="p-8 text-center space-y-4">
                 <div className="w-16 h-16 bg-gradient-primary rounded-full flex items-center justify-center mx-auto">
                   <service.icon className="h-8 w-8 text-white" />
@@ -95,7 +139,11 @@ const Home = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {highlights.map((highlight, index) => (
-              <div key={highlight} className="text-center space-y-2 animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <div
+                key={highlight}
+                className="text-center space-y-2 animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
                 <CheckCircle className="h-8 w-8 text-primary mx-auto" />
                 <p className="font-semibold">{highlight}</p>
               </div>
@@ -108,11 +156,19 @@ const Home = () => {
       <section className="container mx-auto px-4 sm:px-6 lg:px-8">
         <Card className="bg-gradient-primary text-white shadow-elegant">
           <CardContent className="p-12 text-center space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold">Ready to Transform Your Brand?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">
+              Ready to Transform Your Brand?
+            </h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto">
-              Let's work together to create something extraordinary that sets you apart from the competition.
+              Let's work together to create something extraordinary that sets you
+              apart from the competition.
             </p>
-            <Button asChild size="lg" variant="secondary" className="bg-white text-primary hover:bg-white/90">
+            <Button
+              asChild
+              size="lg"
+              variant="secondary"
+              className="bg-white text-primary hover:bg-white/90"
+            >
               <Link to="/contact">
                 Start Your Project
                 <ArrowRight className="ml-2 h-5 w-5" />
