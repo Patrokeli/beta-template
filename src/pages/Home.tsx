@@ -37,9 +37,9 @@ const Home = () => {
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
-              Bring Your Vision to{" "}
+              Style {" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-primary-glow">
-                Life
+                Vision with us
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto leading-relaxed">

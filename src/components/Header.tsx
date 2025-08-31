@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import logo from "@/assets/logo.jpg";
+
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,7 +15,7 @@ const Header = () => {
     { name: "Services", href: "/services" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Testimonials", href: "/testimonials" },
-    { name: "Contact", href: "/contact" },
+    { name: "Contact", href: "/contact" }
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -24,10 +26,17 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">C</span>
+            {/* Replaced single letter with a stylized B for Brand */}
+            <div className="w-8 h-8 rounded-lg overflow-hidden">
+              <img src={logo} alt="Beta 360 Logo" className="w-full h-full object-cover" />
             </div>
-            <span className="text-xl font-bold text-foreground">CreativeStudio</span>
+
+            <div className="flex flex-col">
+              {/* Updated Company Name - choose one that fits you */}
+              <span className="text-xl font-bold text-foreground leading-none">Beta 360</span>
+              {/* NEW: Added a descriptive sub-slogan */}
+              
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -50,7 +59,7 @@ const Header = () => {
           {/* Desktop CTA */}
           <div className="hidden md:flex">
             <Button asChild variant="default" size="sm">
-              <Link to="/contact">Get Started</Link>
+              <Link to="/contact">Start Your Project</Link>
             </Button>
           </div>
 
@@ -86,7 +95,7 @@ const Header = () => {
               ))}
               <div className="px-3 py-2">
                 <Button asChild variant="default" size="sm" className="w-full">
-                  <Link to="/contact">Get Started</Link>
+                  <Link to="/contact">Start Your Project</Link>
                 </Button>
               </div>
             </div>
